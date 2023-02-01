@@ -1,5 +1,5 @@
 import React from "react";
-import { ALink } from "../../Alink";
+import { ALink } from "../UI/Alink";
 import style from "./styles.module.scss";
 
 const Header = () => {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { ALink } from "../../components/Alink";
+import { ALink } from "../components/UI/Alink";
 import axios from "axios";
-import MainLayout from "../../components/UI/MainLayout";
+import MainLayout from "../components/MainLayout";
 
 interface IProps {
   users: any;

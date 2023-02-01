@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import axios from "axios";
-import MainLayout from "../../../components/UI/MainLayout";
+import MainLayout from "../../components/MainLayout";
 
 const User = (props: any) => {
   const { user } = props;
