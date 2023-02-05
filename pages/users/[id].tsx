@@ -1,14 +1,27 @@
-import { useRouter } from "next/router";
+import { FC } from "react";
+
 import axios from "axios";
+import { useRouter } from "next/router";
+
+import { UsersType } from "./types";
+
 import MainLayout from "../../components/MainLayout";
 
-const User = (props: any) => {
+type PropsType = {
+  user: UsersType;
+};
+const User: FC<PropsType> = (props) => {
   const { user } = props;
+
+  // We can get URL data by useRouter() nextJS
   const { query } = useRouter();
+
   return (
     <MainLayout keywords={user.name}>
-      <h1>User with id {user.id}</h1>
-      <div>User name {user.name}</div>
+      <div id={`userID-${user.id}`}>
+        <h1>User with id {user.id}</h1>
+        <div>User name {user.name}</div>
+      </div>
     </MainLayout>
   );
 };

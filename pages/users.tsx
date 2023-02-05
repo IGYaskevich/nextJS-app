@@ -1,13 +1,16 @@
-import React, { useState } from "react";
-import { ALink } from "../components/UI/Alink";
+import React, { FC } from "react";
 import axios from "axios";
+
 import MainLayout from "../components/MainLayout";
+import ALink from "../components/UI/Alink";
+
+import { UsersType } from "./users/types";
 
 interface IProps {
-  users: any;
+  users: Array<UsersType>;
 }
 
-const Users = (props: IProps) => {
+const Users: FC<IProps> = (props: IProps) => {
   const { users } = props;
 
   return (
@@ -15,26 +18,22 @@ const Users = (props: IProps) => {
       <h1>Users page</h1>
       <div>
         {users.length > 1 &&
-          users.map(
-            (
-              // @ts-ignore
-              { name, id }
-            ) => (
-              <li key={id}>
-                <ALink href={`/users/${id}`} name={name} />
-              </li>
-            )
-          )}
+          // users.map(({ name, id }) => (
+          users.map(({ name, id }) => (
+            <li key={id}>
+              <ALink href={`/users/${id}`}>{name}</ALink>
+            </li>
+          ))}
       </div>
     </MainLayout>
   );
 };
 
+// getServerSideProps (Server-Side Rendering)s
 export async function getStaticProps() {
   const response = await axios.get(
     "https://jsonplaceholder.typicode.com/users"
   );
-
   return { props: { users: response.data } };
 }
 

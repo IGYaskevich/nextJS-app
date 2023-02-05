@@ -1,14 +1,19 @@
 import Link from "next/link";
 import style from "./styles.module.scss";
+import { FC, ReactNode } from "react";
 
 type ALinkType = {
   href: string;
-  name: string;
+  // name: string;
+  children: ReactNode;
 };
-export const ALink = ({ href, name }: ALinkType) => {
+const ALink: FC<ALinkType> = (props) => {
+  const { href, children } = props;
   return (
-    <Link href={href} id={href} className={style.alink}>
-      {name}
+    <Link href={href} id={`alinkID-${href}`} className={style.alink}>
+      {children}
+      {/*{name}*/}
     </Link>
   );
 };
+export default ALink;
